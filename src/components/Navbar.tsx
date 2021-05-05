@@ -1,4 +1,4 @@
-import { Flex, Link, Spacer, Text } from "@chakra-ui/layout";
+import { Flex, Link, Spacer } from "@chakra-ui/layout";
 import React from "react";
 import { ColorModeSwitcher } from "../ColorModeSwitcher";
 

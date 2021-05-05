@@ -1,15 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import {
-  Table,
-  TableCaption,
-  Tbody,
-  Td,
-  Th,
-  Thead,
-  Tr,
-} from "@chakra-ui/table";
-import { Box, Center, Text, Wrap } from "@chakra-ui/layout";
+import { Table, Tbody, Td, Th, Thead, Tr } from "@chakra-ui/table";
+import { Box, Center, Text } from "@chakra-ui/layout";
 import { Button } from "@chakra-ui/button";
 import {
   ArrowLeftIcon,
@@ -48,27 +40,28 @@ const ContentItem = (props: Characters) => {
 const Content = () => {
   const [data, setData] = useState<Characters[]>([]);
   const [page, setPage] = useState<number>(1);
-  useEffect(() => {
-    fetchData();
 
+  useEffect(() => {
+    const fetchData = () => {
+      axios
+        .get<Characters[]>(
+          "https://www.anapioficeandfire.com/api/characters?page=" + page
+        )
+        .then((response) => {
+          console.log(response.data);
+          setData(response.data);
+        })
+        .catch((error: unknown) => {
+          console.log(error);
+        });
+    };
+    handlePageChange(page);
     function handlePageChange(page: number) {
-      page != 0 && page != 214 && setPage(page);
+      page !== 0 && page !== 214 && setPage(page);
     }
+    fetchData();
   }, [page]);
 
-  const fetchData = () => {
-    axios
-      .get<Characters[]>(
-        "https://www.anapioficeandfire.com/api/characters?page=" + page
-      )
-      .then((response) => {
-        console.log(response.data);
-        setData(response.data);
-      })
-      .catch((error: unknown) => {
-        console.log(error);
-      });
-  };
   return (
     <Box>
       <Table
