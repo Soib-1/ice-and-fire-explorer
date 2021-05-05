@@ -5,7 +5,7 @@ import { ColorModeSwitcher } from "../ColorModeSwitcher";
 const Navbar = () => {
   return (
     <Flex>
-      <Link href="/" ml="5" pb="5" fontSize="3xl">
+      <Link href="/" ml="5" pb="5" fontSize="3xl" fontFamily={"Itim"}>
         Ice-and-fire-explorer
       </Link>
       <Spacer />

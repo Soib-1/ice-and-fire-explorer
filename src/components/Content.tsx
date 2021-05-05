@@ -71,7 +71,13 @@ const Content = () => {
   };
   return (
     <Box>
-      <Table colorScheme="telegram" maxH="80vh" minH="80vh" mb="6">
+      <Table
+        colorScheme="telegram"
+        maxH="80vh"
+        minH="80vh"
+        mb="6"
+        fontFamily={"Asap"}
+      >
         <Thead>
           <Tr>
             <Th>Name</Th>
