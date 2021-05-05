@@ -1,11 +1,13 @@
-import { Flex, Spacer, Text } from "@chakra-ui/layout";
+import { Flex, Link, Spacer, Text } from "@chakra-ui/layout";
 import React from "react";
 import { ColorModeSwitcher } from "../ColorModeSwitcher";
 
 const Navbar = () => {
   return (
     <Flex>
-      <Text>Ice-and-fire-explorer</Text>
+      <Link href="/" ml="5" pb="5" fontSize="3xl">
+        Ice-and-fire-explorer
+      </Link>
       <Spacer />
       <ColorModeSwitcher />
     </Flex>

@@ -9,7 +9,7 @@ export const App = () => (
       margin="0 auto"
       maxWidth={1200}
       transition="0.5s ease-out"
-      fontSize="xl"
+      fontSize="lg"
       mt="1em"
     >
       <Navbar />

@@ -20,7 +20,7 @@ const Content = () => {
       });
   }, []);
   return (
-    <Wrap>
+    <Wrap fontSize="md">
       {data.map((data) => (
         <ContentItem {...data} />
       ))}

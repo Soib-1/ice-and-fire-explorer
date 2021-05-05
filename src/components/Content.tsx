@@ -1,14 +1,39 @@
 import { Text, Wrap } from "@chakra-ui/layout";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import {
+  Table,
+  TableCaption,
+  Tbody,
+  Td,
+  Th,
+  Thead,
+  Tr,
+} from "@chakra-ui/table";
 
 const ContentItem = (props: Characters) => {
-  return <Text>{props.url}</Text>;
+  return (
+    <Tr>
+      <Td>
+        {props.name}
+        {props.aliases.map((alias) => {
+          return alias + ",";
+        })}
+      </Td>
+      <Td>{props.gender == "" ? "Unknown" : props.gender}</Td>
+      <Td>{props.culture == "" ? "Unknown" : props.culture}</Td>
+      <Td>
+        {props.books.map((book) => {
+          return book[book.length - 1] + ", ";
+        })}
+      </Td>
+      <Td>{props.tvSeries.length - 1}</Td>
+    </Tr>
+  );
 };
 
 const Content = () => {
   const [data, setData] = useState<Characters[]>([]);
-
   useEffect(() => {
     axios
       .get<Characters[]>("https://www.anapioficeandfire.com/api/characters")
@@ -25,11 +50,23 @@ const Content = () => {
     console.log(data);
   }, [data]);
   return (
-    <Wrap>
-      {data.map((data) => (
-        <ContentItem {...data} />
-      ))}
-    </Wrap>
+    <Table colorScheme="telegram">
+      <TableCaption>Characters</TableCaption>
+      <Thead>
+        <Tr>
+          <Th>Name</Th>
+          <Th>Gender</Th>
+          <Th>Culture</Th>
+          <Th>Book list</Th>
+          <Th>Number of seasons</Th>
+        </Tr>
+      </Thead>
+      <Tbody>
+        {data.map((data) => (
+          <ContentItem {...data} />
+        ))}
+      </Tbody>
+    </Table>
   );
 };
 
